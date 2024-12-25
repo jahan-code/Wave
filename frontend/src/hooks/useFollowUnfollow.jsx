@@ -9,7 +9,7 @@ const useFollowUnfollow = () => {
     const toggleFollowUnfollow = async (jiskofollowkrunga) => {
         try {
             const res = await axios.post(
-                `http://localhost:8000/api/v1/user/followorunfollow/${jiskofollowkrunga}`,
+                `https://wave-liart.vercel.app/api/v1/user/followorunfollow/${jiskofollowkrunga}`,
                 {},
                 { withCredentials: true }
             );
