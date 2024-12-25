@@ -3,6 +3,8 @@ import { DialogContent, DialogTrigger } from '@radix-ui/react-dialog';
 import { Bookmark, MessageCircle, MoreHorizontal, Send } from 'lucide-react';
 import { Button } from './ui/button';
 import {FaHeart, FaRegHeart } from 'react-icons/fa';
+import { FaIconName } from "react-icons/fa";
+
 import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 import { Dialog } from '@radix-ui/react-dialog';
 import CommentDialog from './CommentDialog';
