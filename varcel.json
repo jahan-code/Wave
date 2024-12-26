@@ -1,6 +1,9 @@
 {
-    "rewrites":  [
-        {"source": "/(.*)", "destination": "/"}
-     ]
- }
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "https://wave-liart.vercel.app/api/$1"
+      }
+    ]
+  }
   
