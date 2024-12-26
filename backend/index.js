@@ -31,15 +31,10 @@ app.use('/api/v1/user',userRoute)
 app.use('/api/v1/post',postRoute)
 app.use('/api/v1/message',messageRoute)
 app.use(express.static(path.join(__dirname,"/frontend/dist")))
-app.use("*",(req,res)=>{
+app.get("*",(req,res)=>{
     res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"))
 })
-app.get("*",(req,res)=>{
-    return res.status(200).json({
-        message:"I am coming from backend",
-        success:true
-    })
-})
+
 server.listen(PORT,()=>{
     connectDB()
     console.log(`Server is started on port ${PORT}`)
