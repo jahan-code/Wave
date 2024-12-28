@@ -31,7 +31,7 @@ const Post = ({ post }) => {
 
   const deletePostHandler = async () => {
     try {
-        const res = await axios.delete(`http://localhost:8000/api/v1/post/delete/${post?._id}`, { withCredentials: true })
+        const res = await axios.delete(`https://wave-production-a567.up.railway.app/api/v1/post/delete/${post?._id}`, { withCredentials: true })
         if (res.data.success) {
             const updatedPostData = posts.filter((postItem) => postItem?._id !== post?._id);
             dispatch(setPosts(updatedPostData));
@@ -49,7 +49,7 @@ const Post = ({ post }) => {
       
       const action = liked ? 'dislike' : 'like';
       const res = await axios.get(
-        `http://localhost:8000/api/v1/post/${post._id}/${action}`,
+        `https://wave-production-a567.up.railway.app/api/v1/post/${post._id}/${action}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -72,7 +72,7 @@ const Post = ({ post }) => {
   };
   const commentHandler=async()=>{
     try{
-        const res=await axios.post(`http://localhost:8000/api/v1/post/${post._id}/comment`,{text},{
+        const res=await axios.post(`https://wave-production-a567.up.railway.app/api/v1/post/${post._id}/comment`,{text},{
           headers:{
             'Content-Type':'application/json'
           },
@@ -98,7 +98,7 @@ const Post = ({ post }) => {
   }
   const bookmarkHandler = async () => {
     try {
-        const res = await axios.get(`http://localhost:8000/api/v1/post/${post?._id}/bookmark`, {withCredentials:true});
+        const res = await axios.get(`https://wave-production-a567.up.railway.app/api/v1/post/${post?._id}/bookmark`, {withCredentials:true});
         if(res.data.success){
             toast.success(res.data.message);
         }
