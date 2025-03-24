@@ -4,6 +4,7 @@ import Feed from './Feed'
 import { Outlet } from 'react-router-dom'
 import useGetAllPost from '@/hooks/useGetAllPost'
 import useGetSuggestedUsers from '@/hooks/useGetSuggestedUsers'
+import SuggestedUser from './SuggestedUser'
 
 const Home = () => {
   useGetAllPost();
@@ -19,6 +20,7 @@ const Home = () => {
       
       <div className="hidden md:block md:min-w-[300px] lg:min-w-[350px]">  {/* Added minimum width */}
         <RightSidebar />
+      <SuggestedUser/>
       </div>
     </div>
   )
