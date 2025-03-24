@@ -36,14 +36,11 @@ const LeftSidebar = () => {
 
   const handleProfileClick = () => {
     if (timeoutRef.current) {
-      // Double click detected
       clearTimeout(timeoutRef.current)
       timeoutRef.current = null
       logoutHandler()
     } else {
-      // First click, set timeout for single click
       timeoutRef.current = setTimeout(() => {
-        // Single click action
         navigate(`/profile/${user?._id}`)
         timeoutRef.current = null
       }, 300)
@@ -89,7 +86,8 @@ const LeftSidebar = () => {
       ),
       text: "profile"
     },
-    { icon: <LogOut size={24} />, text: "Logout" }
+    // Logout item with responsive visibility
+    { icon: <LogOut size={24} />, text: "Logout", className: "hidden md:flex" }
   ]
 
   return (
@@ -101,7 +99,7 @@ const LeftSidebar = () => {
             <div
               key={index}
               onClick={item.text === "profile" ? handleProfileClick : () => sidebarHandler(item.text)}
-              className="flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full"
+              className={`flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full ${item.className || ''}`}
             >
               <div className="relative">
                 {item.icon}
