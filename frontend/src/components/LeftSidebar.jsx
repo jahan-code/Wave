@@ -75,8 +75,16 @@ const LeftSidebar = () => {
     { icon: <Home size={24} />, text: "Home" },
     { icon: <TrendingUp size={24} />, text: "Explore" },
     { icon: <PlusSquare size={24} />, text: "Create" },
-    { icon: <Heart size={24} />, text: "Notifications" },
-    { icon: <MessageCircle size={24} />, text: "Messages" },
+    { 
+      icon: <Heart size={24} />, 
+      text: "Notifications",
+      className: "hidden md:flex" // Hide notifications on mobile
+    },
+    { 
+      icon: <MessageCircle size={24} />, 
+      text: "Messages",
+      className: "hidden md:flex" // Hide messages on mobile
+    },
     {
       icon: (
         <Avatar className="w-6 h-6 md:w-8 md:h-8">
@@ -86,62 +94,86 @@ const LeftSidebar = () => {
       ),
       text: "profile"
     },
-    // Logout item with responsive visibility
     { icon: <LogOut size={24} />, text: "Logout", className: "hidden md:flex" }
   ]
 
   return (
-    <div className="fixed bottom-0 left-0 w-full h-16 border-t bg-background md:fixed md:top-0 md:left-0 md:w-[16%] md:h-screen md:border-r z-50">
-      <div className="flex flex-col h-full">
-        <h1 className="hidden md:block my-8 pl-3 font-bold text-xl">Wave</h1>
-        <div className="flex flex-row justify-around items-center h-full md:flex-col md:items-start md:justify-start">
-          {sidebarItems.map((item, index) => (
-            <div
-              key={index}
-              onClick={item.text === "profile" ? handleProfileClick : () => sidebarHandler(item.text)}
-              className={`flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full ${item.className || ''}`}
-            >
-              <div className="relative">
-                {item.icon}
-                {item.text === "Notifications" && likeNotification.length > 0 && (
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        size="icon"
-                        className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-600 hover:bg-red-600 text-xs md:bottom-6 md:left-6"
-                      >
-                        {likeNotification.length}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      <div>
-                        {likeNotification.length === 0 ? (
-                          <p>No new notification</p>
-                        ) : (
-                          likeNotification.map((notification) => (
-                            <div key={notification.userId} className="flex items-center gap-2 my-2">
-                              <Avatar className="w-6 h-6">
-                                <AvatarImage src={notification.userDetails?.profilePicture} />
-                                <AvatarFallback>CN</AvatarFallback>
-                              </Avatar>
-                              <p className="text-sm">
-                                <span className="font-bold">{notification.userDetails?.username}</span> liked your post
-                              </p>
-                            </div>
-                          ))
-                        )}
-                      </div>
-                    </PopoverContent>
-                  </Popover>
-                )}
-              </div>
-              <span className="text-xs md:text-base md:inline-block">{item.text}</span>
-            </div>
-          ))}
+    <>
+      {/* Mobile Top Navbar */}
+      <div className="md:hidden fixed top-0 left-0 w-full h-16 bg-background border-b z-50 flex items-center justify-between px-4">
+        <h1 className="font-bold text-xl">Wave</h1>
+        <div className="flex gap-4">
+          <button 
+            onClick={() => navigate('/notifications')}
+            className="relative"
+          >
+            <Heart size={24} />
+            {likeNotification.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {likeNotification.length}
+              </span>
+            )}
+          </button>
+          <button onClick={() => navigate('/chat')}>
+            <MessageCircle size={24} />
+          </button>
         </div>
       </div>
-      <CreatePost open={open} setOpen={setOpen} />
-    </div>
+
+      {/* Main Sidebar/Bottom Nav */}
+      <div className="fixed bottom-0 left-0 w-full h-16 border-t bg-background md:fixed md:top-0 md:left-0 md:w-[16%] md:h-screen md:border-r z-50">
+        <div className="flex flex-col h-full">
+          <h1 className="hidden md:block my-8 pl-3 font-bold text-xl">Wave</h1>
+          <div className="flex flex-row justify-around items-center h-full md:flex-col md:items-start md:justify-start">
+            {sidebarItems.map((item, index) => (
+              <div
+                key={index}
+                onClick={item.text === "profile" ? handleProfileClick : () => sidebarHandler(item.text)}
+                className={`flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full ${item.className || ''}`}
+              >
+                <div className="relative">
+                  {item.icon}
+                  {/* Desktop notification badge */}
+                  {item.text === "Notifications" && likeNotification.length > 0 && (
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          size="icon"
+                          className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-600 hover:bg-red-600 text-xs md:bottom-6 md:left-6"
+                        >
+                          {likeNotification.length}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <div>
+                          {likeNotification.length === 0 ? (
+                            <p>No new notification</p>
+                          ) : (
+                            likeNotification.map((notification) => (
+                              <div key={notification.userId} className="flex items-center gap-2 my-2">
+                                <Avatar className="w-6 h-6">
+                                  <AvatarImage src={notification.userDetails?.profilePicture} />
+                                  <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                                <p className="text-sm">
+                                  <span className="font-bold">{notification.userDetails?.username}</span> liked your post
+                                </p>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  )}
+                </div>
+                <span className="text-xs md:text-base md:inline-block">{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <CreatePost open={open} setOpen={setOpen} />
+      </div>
+    </>
   )
 }
 
