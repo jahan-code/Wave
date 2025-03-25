@@ -78,13 +78,13 @@ const LeftSidebar = () => {
     { 
       icon: <Heart size={24} />, 
       text: "Notifications",
-      className: "hidden md:flex" // Hide notifications on mobile
+      className: "hidden md:flex" 
     },
     { 
       icon: <MessageCircle size={24} />, 
       text: "Messages",
-      className: "hidden md:flex" // Hide messages on mobile
-    },
+      className: "hidden md:flex" 
+        },
     {
       icon: (
         <Avatar className="w-6 h-6 md:w-8 md:h-8">
