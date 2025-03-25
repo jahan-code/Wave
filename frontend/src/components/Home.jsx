@@ -13,14 +13,22 @@ const Home = () => {
   return (
     <div className='flex'>
       {/* Main content area */}
-      <div className='flex-grow w-full min-w-0'>  {/* Added min-w-0 for better responsive behavior */}
+      <div className='flex-grow w-full min-w-0'>
         <Feed/>
-      <SuggestedUser/>
+        
+        {/* Mobile Suggestions */}
+        <div className="md:hidden px-2">
+          <SuggestedUser/>
+        </div>
+        
         <Outlet/>
       </div>
       
-      <div className="hidden md:block md:min-w-[300px] lg:min-w-[350px]">  {/* Added minimum width */}
-        <RightSidebar />
+      {/* Desktop Sidebar */}
+      <div className="hidden md:block md:min-w-[300px] lg:min-w-[350px]">
+        <RightSidebar>
+          <SuggestedUser/>
+        </RightSidebar>
       </div>
     </div>
   )
