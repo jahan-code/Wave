@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import useFollowUnfollow from '@/hooks/useFollowUnfollow';
 import './SuggestedUser.css';
+
 const SuggestedUser = () => {
     const { suggestedUsers, user } = useSelector(store => store.auth);
     const { toggleFollowUnfollow } = useFollowUnfollow();
@@ -69,7 +70,6 @@ const SuggestedUser = () => {
                         ))}
                     </div>
                 ) : (
-                    // Horizontal slider
                     <div className='flex overflow-x-auto gap-3 px-4 pb-4 mt-3 hide-scrollbar'>
                         {suggestedUsers.slice(0, 5).map((user) => (
                             <div
@@ -105,43 +105,34 @@ const SuggestedUser = () => {
                 )}
             </div>
 
-            {/* Desktop View */}
+            {/* Desktop View - Corrected Structure */}
             <div className='hidden md:block'>
                 {suggestedUsers.map((user) => (
-                    <div
-                        key={user._id}
-                        className='flex items-center justify-between my-5 p-0 bg-transparent'
-                    >
-                        {/* Desktop View - Original Structure */}
-                        <div className='hidden md:block'>
-                            {suggestedUsers.map((user) => (
-                                <div key={user._id} className='flex items-center justify-between my-5'>
-                                    <div className='flex items-center gap-2'>
-                                        <Link to={`/profile/${user?._id}`}>
-                                            <Avatar className='h-10 w-10'>
-                                                <AvatarImage src={user?.profilePicture} alt="profile_image" />
-                                                <AvatarFallback>CN</AvatarFallback>
-                                            </Avatar>
-                                        </Link>
-                                        <div>
-                                            <h1 className='font-semibold text-sm'>
-                                                <Link to={`/profile/${user?._id}`}>{user?.username}</Link>
-                                            </h1>
-                                            <span className='text-gray-600 text-sm'>{user?.bio}</span>
-                                        </div>
-                                    </div>
-                                    <button
-                                        className={`text-xs font-bold cursor-pointer ${isFollowing(user._id)
-                                                ? 'text-gray-300'
-                                                : 'text-[#3BADF8]'
-                                            }`}
-                                        onClick={() => handleFollowUnfollow(user._id)}
-                                    >
-                                        {isFollowing(user._id) ? 'Unfollow' : 'Follow'}
-                                    </button>
-                                </div>
-                            ))}
+                    <div key={user._id} className='flex items-center justify-between my-5'>
+                        <div className='flex items-center gap-2'>
+                            <Link to={`/profile/${user?._id}`}>
+                                <Avatar className='h-10 w-10'>
+                                    <AvatarImage src={user?.profilePicture} alt="profile_image" />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                            </Link>
+                            <div>
+                                <h1 className='font-semibold text-sm'>
+                                    <Link to={`/profile/${user?._id}`}>{user?.username}</Link>
+                                </h1>
+                                <span className='text-gray-600 text-sm'>{user?.bio}</span>
+                            </div>
                         </div>
+                        <button
+                            className={`text-xs font-bold cursor-pointer ${
+                                isFollowing(user._id) 
+                                ? 'text-gray-300' 
+                                : 'text-[#3BADF8]'
+                            }`}
+                            onClick={() => handleFollowUnfollow(user._id)}
+                        >
+                            {isFollowing(user._id) ? 'Unfollow' : 'Follow'}
+                        </button>
                     </div>
                 ))}
             </div>
@@ -150,4 +141,3 @@ const SuggestedUser = () => {
 };
 
 export default SuggestedUser;
-
