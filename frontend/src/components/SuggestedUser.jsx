@@ -26,7 +26,7 @@ const SuggestedUser = () => {
                 {suggestedUsers.map((user) => (
                     <div 
                         key={user._id} 
-                        className='flex flex-col md:flex-row items-center justify-between my-3 p-4 md:p-0 bg-white rounded-xl shadow-md md:shadow-none md:bg-transparent md:my-5 mx-4 md:mx-0'
+                        className='flex flex-col w-[160px] md:flex-row items-center justify-between my-3 p-4 md:p-0 bg-white rounded-xl shadow-md md:shadow-none md:bg-transparent md:my-5 mx-4 md:mx-0'
                     >
                         <div className='flex flex-col md:flex-row items-center gap-3'>
                             <Link to={`/profile/${user?._id}`}>
