@@ -16,15 +16,13 @@ const Home = () => {
       <div className='flex-grow w-full min-w-0'>
         <Feed/>
         
-        {/* Mobile Suggestions */}
-        <div className="md:hidden px-2">
-          <SuggestedUser/>
-        </div>
+        
+        
         
         <Outlet/>
       </div>
       
-      {/* Desktop Sidebar */}
+      
       <div className="hidden md:block md:min-w-[300px] lg:min-w-[350px]">
         <RightSidebar>
           <SuggestedUser/>
