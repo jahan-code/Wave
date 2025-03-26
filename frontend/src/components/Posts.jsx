@@ -19,7 +19,7 @@ const Posts = () => {
       )}
       
       {/* Render remaining posts */}
-      {posts.slice(2).map(post => (
+      {posts.slice(1).map(post => (
         <Post key={post._id} post={post} />
       ))}
     </div>
