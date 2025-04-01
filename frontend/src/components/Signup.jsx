@@ -25,7 +25,7 @@ const Signup = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post('https://wave-production-a567.up.railway.app/api/v1/user/register', input, {
+      const res = await axios.post('https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/user/register', input, {
         headers: {
           'Content-Type': 'application/json'
         },
