@@ -17,7 +17,7 @@ const ChatPage = () => {
 
     const sendMessageHandler = async (receiverId) => {
         try {
-            const res = await axios.post(`https://wave-production-a567.up.railway.app/api/v1/message/send/${receiverId}`, { textMessage }, {
+            const res = await axios.post(`https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/message/send/${receiverId}`, { textMessage }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },

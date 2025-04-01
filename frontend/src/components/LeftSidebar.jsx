@@ -21,7 +21,7 @@ const LeftSidebar = () => {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get('https://wave-production-a567.up.railway.app/api/v1/user/logout', { withCredentials: true })
+      const res = await axios.get('https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/user/logout', { withCredentials: true })
       
       if (res.data.success) {
         dispatch(setAuthUser(null))
