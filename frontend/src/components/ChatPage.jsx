@@ -17,7 +17,7 @@ const ChatPage = () => {
 
     const sendMessageHandler = async (receiverId) => {
         try {
-            const res = await axios.post(`https://coloured-phyllis-codexspaces-72f85dc2.koyeb.app/api/v1/message/send/${receiverId}`, { textMessage }, {
+            const res = await axios.post(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/message/send/${receiverId}`, { textMessage }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
