@@ -10,7 +10,7 @@ const useGetSuggestedUsers = () =>{
     useEffect(() => {
         const fetchSuggestedUsers = async () => {
             try {
-                const res = await axios.get('https://wave-production-a567.up.railway.app/api/v1/user/suggested', { withCredentials: true });
+                const res = await axios.get('https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/user/suggested', { withCredentials: true });
 
                 if (res.data.success) { 
 

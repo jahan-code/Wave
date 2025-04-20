@@ -31,7 +31,7 @@ const Post = ({ post }) => {
 
   const deletePostHandler = async () => {
     try {
-        const res = await axios.delete(`https://wave-production-a567.up.railway.app/api/v1/post/delete/${post?._id}`, { withCredentials: true })
+        const res = await axios.delete(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/delete/${post?._id}`, { withCredentials: true })
         if (res.data.success) {
             const updatedPostData = posts.filter((postItem) => postItem?._id !== post?._id);
             dispatch(setPosts(updatedPostData));
@@ -49,7 +49,7 @@ const Post = ({ post }) => {
       
       const action = liked ? 'dislike' : 'like';
       const res = await axios.get(
-        `https://wave-production-a567.up.railway.app/api/v1/post/${post._id}/${action}`,
+        `https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/${post._id}/${action}`,
         { withCredentials: true }
       );
       if (res.data.success) {

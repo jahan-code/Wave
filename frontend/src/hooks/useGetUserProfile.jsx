@@ -10,7 +10,7 @@ const useGetUserProfile = (userId) => {
     useEffect(() => {
         const fetchUserProfile = async () => {
             try {
-                const res = await axios.get(`https://wave-production-a567.up.railway.app/api/v1/user/${userId}/profile`, { withCredentials: true });
+                const res = await axios.get(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/user/${userId}/profile`, { withCredentials: true });
 
                 if (res.data.success) {
 
