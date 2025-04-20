@@ -42,7 +42,7 @@ const EditProfile = () => {
         }
         try {
             setLoading(true);
-            const res = await axios.post('https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/user/profile/edit', formData,{
+            const res = await axios.post('https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/user/profile/edit', formData,{
                 headers:{
                     'Content-Type':'multipart/form-data'
                 },

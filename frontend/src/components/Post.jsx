@@ -72,7 +72,7 @@ const Post = ({ post }) => {
   };
   const commentHandler=async()=>{
     try{
-        const res=await axios.post(`https://wave-production-a567.up.railway.app/api/v1/post/${post._id}/comment`,{text},{
+        const res=await axios.post(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/${post._id}/comment`,{text},{
           headers:{
             'Content-Type':'application/json'
           },
@@ -98,7 +98,7 @@ const Post = ({ post }) => {
   }
   const bookmarkHandler = async () => {
     try {
-        const res = await axios.get(`https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/post/${post?._id}/bookmark`, {withCredentials:true});
+        const res = await axios.get(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/${post?._id}/bookmark`, {withCredentials:true});
         if(res.data.success){
             toast.success(res.data.message);
         }

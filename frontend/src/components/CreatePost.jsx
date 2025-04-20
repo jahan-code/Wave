@@ -42,7 +42,7 @@ const CreatePost = ({ open, setOpen }) => {
     try {
       setLoading(true);
       const res = await axios.post(
-        'https://wave-production-a567.up.railway.app/api/v1/post/addpost',
+        'https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/addpost',
         formData,
         {
           headers: {

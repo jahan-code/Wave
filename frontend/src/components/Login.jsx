@@ -25,7 +25,7 @@ const Login = () => {
     
     try {
       setLoading(true);
-      const res = await axios.post('https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/user/login', input, {
+      const res = await axios.post('https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/user/login', input, {
         headers: {
           'Content-Type': 'application/json'
         },

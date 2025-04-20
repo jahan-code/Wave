@@ -32,7 +32,7 @@ const CommentDialog = ({ open, setOpen }) => {
   
   const sendMessageHandler=async()=>{
     try{
-        const res=await axios.post(`https://promising-margery-codexspaces-d281ce63.koyeb.app/api/v1/post/${selectedPost?._id}/comment`,{text},{
+        const res=await axios.post(`https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/post/${selectedPost?._id}/comment`,{text},{
           headers:{
             'Content-Type':'application/json'
           },
