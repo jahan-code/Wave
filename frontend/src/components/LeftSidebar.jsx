@@ -52,11 +52,15 @@ const LeftSidebar = () => {
       logoutHandler()
     } else if (textType === 'Create') {
       setOpen(true)
-    }  else if (textType === 'Messages') {
+    } else if (textType === 'Notifications') {
+    
+    } else if (textType === 'Messages') {
       navigate('/chat')
     } else if (textType === 'Home') {
       navigate('/')
-    } 
+    } else if (textType === 'Explore') {
+     
+    }
   }
 
   useEffect(() => {
@@ -129,6 +133,7 @@ const LeftSidebar = () => {
               >
                 <div className="relative">
                   {item.icon}
+                  <span>{item.text}</span>
                   {/* Desktop notification badge */}
                   {item.text === "Notifications" && likeNotification.length > 0 && (
                     <Popover>
