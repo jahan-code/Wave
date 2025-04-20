@@ -52,15 +52,11 @@ const LeftSidebar = () => {
       logoutHandler()
     } else if (textType === 'Create') {
       setOpen(true)
-    } else if (textType === 'Notifications') {
-      navigate('/notifications')
-    } else if (textType === 'Messages') {
+    }  else if (textType === 'Messages') {
       navigate('/chat')
     } else if (textType === 'Home') {
       navigate('/')
-    } else if (textType === 'Explore') {
-      navigate('/explore')
-    }
+    } 
   }
 
   useEffect(() => {
@@ -88,7 +84,7 @@ const LeftSidebar = () => {
     {
       icon: (
         <Avatar className="w-6 h-6 md:w-8 md:h-8">
-          <AvatarImage src={user?.profilePicture} />
+          <AvatarImage src={user?.profilePicture} alt="@shadcn"/>
           <AvatarFallback>{user?.username[0]}</AvatarFallback>
         </Avatar>
       ),
