@@ -133,7 +133,6 @@ const LeftSidebar = () => {
               >
                 <div className="relative">
                   {item.icon}
-                  <span>{item.text}</span>
                   {/* Desktop notification badge */}
                   {item.text === "Notifications" && likeNotification.length > 0 && (
                     <Popover>
