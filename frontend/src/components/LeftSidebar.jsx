@@ -132,8 +132,8 @@ const LeftSidebar = () => {
                 className={`flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full ${item.className || ''}`}
               >
                 <div className="relative">
-                  {item.icon}
                     <span>{item.text}</span>
+                  {item.icon}
                   {/* Desktop notification badge */}
                   {item.text === "Notifications" && likeNotification.length > 0 && (
                     <Popover>
