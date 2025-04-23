@@ -101,25 +101,48 @@ const LeftSidebar = () => {
   return (
     <>
       {/* Mobile Top Navbar */}
-      <div className="md:hidden fixed top-0 left-0 w-full h-16 bg-background border-b z-50 flex items-center justify-between px-4">
-        <h1 className="font-bold text-xl">Wave</h1>
-        <div className="flex gap-4">
-          <button 
-            onClick={() => navigate('/notifications')}
-            className="relative"
-          >
-            <Heart size={24} />
-            {likeNotification.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                {likeNotification.length}
-              </span>
-            )}
-          </button>
-          <button onClick={() => navigate('/chat')}>
-            <MessageCircle size={24} />
-          </button>
+    {/* Mobile Top Navbar */}
+<div className="md:hidden fixed top-0 left-0 w-full h-16 bg-background border-b z-50 flex items-center justify-between px-4">
+  <h1 className="font-bold text-xl">Wave</h1>
+  <div className="flex gap-4">
+    <Popover>
+      <PopoverTrigger asChild>
+        <button className="relative">
+          <Heart size={24} />
+          {likeNotification.length > 0 && (
+            <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {likeNotification.length}
+            </span>
+          )}
+        </button>
+      </PopoverTrigger>
+      <PopoverContent className="w-64">
+        <div>
+          {likeNotification.length === 0 ? (
+            <p className="text-sm text-gray-500 text-center">No new notifications</p>
+          ) : (
+            likeNotification.map((notification) => (
+              <div key={notification.userId} className="flex items-center gap-2 my-2">
+                <Avatar className="w-6 h-6">
+                  <AvatarImage src={notification.userDetails?.profilePicture} />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <p className="text-sm">
+                  <span className="font-bold">{notification.userDetails?.username}</span> liked your post
+                </p>
+              </div>
+            ))
+          )}
         </div>
-      </div>
+      </PopoverContent>
+    </Popover>
+
+    <button onClick={() => navigate('/chat')}>
+      <MessageCircle size={24} />
+    </button>
+  </div>
+</div>
+
 
       {/* Main Sidebar/Bottom Nav */}
       <div className="fixed bottom-0 left-0 w-full h-16 border-t bg-background md:fixed md:top-0 md:left-0 md:w-[16%] md:h-screen md:border-r z-50">
