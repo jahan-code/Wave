@@ -159,7 +159,7 @@ const LeftSidebar = () => {
                                   <AvatarFallback>CN</AvatarFallback>
                                 </Avatar>
                                 <p className="text-sm">
-                                  <span className="font-bold">{notification.userDetails?.username}</span> like your post
+                                  <span className="font-bold">{notification.userDetails?.username}</span> liked your post
                                 </p>
                               </div>
                             ))
