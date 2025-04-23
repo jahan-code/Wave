@@ -23,7 +23,7 @@ const LeftSidebar = () => {
   const logoutHandler = async () => {
     try {
       const res = await axios.get('https://fine-jeniffer-codexspaces-178dc5b8.koyeb.app/api/v1/user/logout', { withCredentials: true })
-
+      
       if (res.data.success) {
         dispatch(setAuthUser(null))
         dispatch(setPosts([]))
@@ -54,13 +54,13 @@ const LeftSidebar = () => {
     } else if (textType === 'Create') {
       setOpen(true)
     } else if (textType === 'Notifications') {
-
+    
     } else if (textType === 'Messages') {
       navigate('/chat')
     } else if (textType === 'Home') {
       navigate('/')
     } else if (textType === 'Explore') {
-
+     
     }
   }
 
@@ -76,20 +76,20 @@ const LeftSidebar = () => {
     { icon: <Home size={24} />, text: "Home" },
     { icon: <TrendingUp size={24} />, text: "Explore" },
     { icon: <PlusSquare size={24} />, text: "Create" },
-    {
-      icon: <Heart size={24} />,
+    { 
+      icon: <Heart size={24} />, 
       text: "Notifications",
-      className: "hidden md:flex"
+      className: "hidden md:flex" 
     },
-    {
-      icon: <MessageCircle size={24} />,
+    { 
+      icon: <MessageCircle size={24} />, 
       text: "Messages",
-      className: "hidden md:flex"
-    },
+      className: "hidden md:flex" 
+        },
     {
       icon: (
         <Avatar className="w-6 h-6 md:w-8 md:h-8">
-          <AvatarImage src={user?.profilePicture} alt="@shadcn" />
+          <AvatarImage src={user?.profilePicture} alt="@shadcn"/>
           <AvatarFallback>{user?.username[0]}</AvatarFallback>
         </Avatar>
       ),
@@ -104,7 +104,7 @@ const LeftSidebar = () => {
       <div className="md:hidden fixed top-0 left-0 w-full h-16 bg-background border-b z-50 flex items-center justify-between px-4">
         <h1 className="font-bold text-xl">Wave</h1>
         <div className="flex gap-4">
-          <button
+          <button 
             onClick={() => navigate('/notifications')}
             className="relative"
           >
@@ -133,41 +133,41 @@ const LeftSidebar = () => {
                 className={`flex flex-col items-center gap-1 p-2 hover:bg-gray-100 cursor-pointer rounded-lg md:flex-row md:gap-3 md:p-3 md:my-3 md:w-full ${item.className || ''}`}
               >
                 <div className="relative">
-                  <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
-                    {item.icon}
-                  </div>
+                <div className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center">
+    {item.icon}
+  </div>
                   {/* Desktop notification badge */}
-                  <div>
-
-                  {
-                    item.text === "Notifications" && likeNotification.length > 0 && (
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button size='icon' className="rounded-full h-5 w-5 bg-red-600 hover:bg-red-600 absolute bottom-6 left-6">{likeNotification.length}</Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <div>
-                            {
-                              likeNotification.length === 0 ? (<p>No new notification</p>) : (
-                                likeNotification.map((notification) => {
-                                  return (
-                                    <div key={notification.userId} className='flex items-center gap-2 my-2'>
-                                      <Avatar>
-                                        <AvatarImage src={notification.userDetails?.profilePicture} />
-                                        <AvatarFallback>CN</AvatarFallback>
-                                      </Avatar>
-                                      <p className='text-sm'><span className='font-bold'>{notification.userDetails?.username}</span> liked your post</p>
-                                    </div>
-                                  )
-                                })
-                              )
-                            }
-                          </div>
-                        </PopoverContent>
-                      </Popover>
-                    )
-                  }
-                  </div>
+                  {item.text === "Notifications" && likeNotification.length > 0 && (
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <Button
+                          size="icon"
+                          className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-red-600 hover:bg-red-600 text-xs md:bottom-6 md:left-6"
+                        >
+                          {likeNotification.length}
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <div>
+                          {likeNotification.length === 0 ? (
+                            <p>No new notification</p>
+                          ) : (
+                            likeNotification.map((notification) => (
+                              <div key={notification.userId} className="flex items-center gap-2 my-2">
+                                <Avatar className="w-6 h-6">
+                                  <AvatarImage src={notification.userDetails?.profilePicture} />
+                                  <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                                <p className="text-sm">
+                                  <span className="font-bold">{notification.userDetails?.username}</span> liked your post
+                                </p>
+                              </div>
+                            ))
+                          )}
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  )}
                 </div>
                 <span className="text-xs md:text-base md:inline-block">{item.text}</span>
               </div>
